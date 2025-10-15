@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <aside></aside>
+    <nav></nav>
+    <main class="border">
+            <h1>Add Task</h1>
+            <section>
+                <div class="add-task-container">
+                    <div class="task-input-container">
+                        <span>Title</span>
+                        <input type="text" class="task-input" placeholder="Enter title">
+                        <span>Description</span>
+                        <input type="text" class="task-input" placeholder="Enter description">
+                        <span>Due date</span>
+                        <input type="date" class="task-input">
+                    </div>
+                </div>
+
+                <div class="separator"></div>
+
+                <div class="add-task-container-right">
+                    <div class="priority-container">
+                        <span>Priority</span>
+                        <div class="priority-buttons">
+                            <button type="button" class="priority-btn">Urgent</button>
+                            <button type="button" class="priority-btn">Medium</button>
+                            <button type="button" class="priority-btn">Low</button>
+                        </div>
+                    </div>
+                    <div class="category-container">
+                        <span>Assigned to</span>
+                        <select class="category-select" multiple>
+                            <option>Category 1</option>
+                        </select>
+                    </div>
+                    <div class="category-container">
+                        <span>Select task category</span>
+                        <select class="category-select">
+                            <option>Category 1</option>
+                        </select>
+                    </div>
+                    <div class="subtasks-container">
+                        <span>Subtasks</span>
+                        <input type="text" class="task-input" placeholder="Add new subtask">
+                    </div>
+                </div>
+
+            </section>
+
+            <div></div>
+
+
+        </div>
+    </main>
+
+</body>
+</html>
