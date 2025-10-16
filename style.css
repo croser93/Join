@@ -216,3 +216,28 @@ label {
   padding: 6px 0px;
 
 }
+
+.taskOutput{
+  font-size: 16px;
+  padding: 4px;
+
+}
+
+.subtask{
+  display: flex;
+  flex-direction: column;
+}
+
+.taskOutput:hover{
+  background-color: #dad8d8;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+
+
+
+
+.priority-btn:hover .urgent_icon svg {
+  fill: orange;
+}

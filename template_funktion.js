@@ -1,6 +1,8 @@
 function init() {
     renderContactOnHTML()
     renderCategoryOnHTML()
+    addSubtask()
+    fetchSVG()
 }
 
 let contact = ["Alex", "Lisa", "Tim", "Max"]; // Soll später aus DB kommen

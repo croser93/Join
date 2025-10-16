@@ -14,22 +14,22 @@
     <aside></aside>
     <nav></nav>
     <main class="border">
-        <form action="">
+        <form>
             <h1>Add Task</h1>
             <section>
                 <div class="add-task-container">
                     <div class="task-input-container">
-                        <div class="input_field" required>
-                            <label for="Title">Title<span class="req">*</span></label>
-                            <input type="text" class="task-input" placeholder="Enter a title">
+                        <div class="input_field">
+                            <label aria-label="title">Title<span class="req">*</span></label>
+                            <input type="text" id="title" class="task-input" placeholder="Enter a title" required>
                         </div>
                             <div class="input_field">
-                            <label for="Title">Discription</label>
-                            <input type="text" class="task-input height_136" placeholder="Enter a description">
+                            <label aria-label="Title">Discription</label>
+                            <input type="text" id="discription" class="task-input height_136" placeholder="Enter a description">
                         </div>
                         <div class="input_field">
-                            <label for="Date">Due date<span class="req">*</span></label>
-                            <input type="date"  class="task-input" placeholder="dd/mm/yyyy">
+                            <label aria-label="Date">Due date<span class="req">*</span></label>
+                            <input type="date" id="date" class="task-input" placeholder="dd/mm/yyyy" required>
                         </div>
                     </div>
                 </div>
@@ -39,29 +39,32 @@
                 <div class="add-task-container-right">
                     <div class="task-input-container">
                         <div class="input_field">
-                            <label for="Priority">Priority</label>
+                            <label aria-label="Priority">Priority</label>
                             <div class="priority-buttons">
-                                <button type="button" class="priority-btn">Urgent</button>
-                                <button type="button" class="priority-btn">Medium</button>
-                                <button type="button" class="priority-btn">Low</button>
+                                <!-- hover effekt einbinden -->
+                                <button type="button" id="urgentBtn" class="priority-btn">Urgent <span class="urgent_icon"></span> </button> 
+                                <button type="button" class="priority-btn">Medium <img src="./assets/Medium.svg" alt=""></button>
+                                <button type="button" class="priority-btn">Low <img src="./assets/Low.svg" alt=""></button>
+                                <!--  -->
                             </div>
                         </div>
 
                         <div class="input_field">
-                            <label for="Assigned_to">Assigned to</label>
-                       <div class="custom-category-dropdown" id="contactDropdown">
+                            <label aria-label="Assigned_to">Assigned to</label>
+                            <div class="custom-category-dropdown" id="contactDropdown">
                                 <div class="dropdown-header" onclick="toggleContactDropdown()">
                                     <span>Select contacts to assign</span>
                                     <span class="dropdown-arrow" id="dropdownArrow">🢓</span>
                                 </div>
                                 <div class="dropdown-list" id="categoryDropdownList">
                                     <div id="labelContact"></div>
+                                </div>
                             </div>
                         </div>
                         
 
                         <div class="input_field">
-                            <label for="Category">Category<span class="req">*</span></label>
+                            <label aria-label="Category">Category<span class="req">*</span></label>
 
                             <div class="custom-category-dropdown" id="categoryDropdown">
                                 <div class="dropdown-header" onclick="toggleCategoryDropdown()">
@@ -76,9 +79,11 @@
                         
 
                         <div class="input_field">
-                            <label for="Subtasks">Subtasks</label>
-                            <input type="text" class="task-input" placeholder="Add new subtask">
+                            <label aria-label="Subtasks">Subtasks</label>
+                            <input type="text" class="task-input" id="subtaskReadOut" placeholder="Add new subtask">
+                            <div class="subtask" id="addSubtask"></div>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -87,7 +92,7 @@
                 <span><span class="req">*</span>This field is required</span>
                 <div class="buttons_Add_Task">
                     <button type="clear" class="btn btn_clear">Clear</button>
-                    <button type="submit" class="btn btn_create">Create Task</button>
+                    <button type="submit" onclick="addTask()" class="btn btn_create" >Create Task</button>
             </div>
         </form>
 
