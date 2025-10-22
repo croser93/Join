@@ -51,7 +51,7 @@ nav {
 }
 
 main {
-  height: 100vh;
+  height: calc(100vh - 96px);
   margin-left: 232px;
   display: flex;
   justify-content: center;
@@ -129,10 +129,6 @@ label {
   cursor: pointer;
   transition: background 0.2s;
 }
-.priority-btn:hover {
-  background: #ffa800;
-  color: #fff;
-}
 
 .category-select {
   width: 440px;
@@ -182,6 +178,7 @@ label {
   background: #fff;
   border-radius: 4px;
   cursor: pointer;
+  margin-bottom: 8px;
 }
 .dropdown-arrow {
   transition: transform 0.2s;
@@ -198,6 +195,9 @@ label {
   position: static;
   border-radius: 0 0 4px 4px;
   padding: 8px 12px;
+  max-height: 200px;
+  overflow-x: auto;
+  margin-bottom: 8px;
 }
 .custom-category-dropdown.open .dropdown-list {
   display: block;
@@ -233,11 +233,79 @@ label {
   cursor: pointer;
   border-radius: 16px;
 }
+/* ################################### */
 
 
+.priority-btn:hover {
+  color: #fff;
+}
 
+.priority-btn:hover svg {
+  filter: brightness(0) invert(1);
+}
 
+/* Der "aktive" Zustand soll genau so aussehen wie der Hover-Zustand */
+.urgent_btn:hover,
+.medium-btn:hover,
+.low_btn:hover {
+  color: #fff;
+}
 
-.priority-btn:hover .urgent_icon svg {
-  fill: orange;
+.medium-btn svg 
+{ filter: brightness(0); }
+
+.urgent_btn:hover svg,
+.medium-btn:hover svg,
+.low_btn:hover svg {
+  filter: brightness(0) invert(1);
+}
+
+/* Individuelle Hintergrundfarben */
+.urgent_btn:hover { background: #ff3d00; }
+.medium-btn:hover { background: #ffa800; }
+.low_btn:hover    { background: #7ae229; }
+
+.priority-btn.active {
+  color: #fff;
+}
+
+.priority-btn.active svg {
+  filter: brightness(0) invert(1);
+}
+
+/* Und hier die individuellen Farben, wie beim Hover */
+.urgent_btn.active { background: #ff3d00; }
+.medium-btn.active { background: #ffa800; }
+.low_btn.active    { background: #7ae229; }
+
+.iconConact{
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+  text-transform: uppercase;
+
+}
+
+.gap8{
+  gap: 8px;
+}
+
+/* ############################################### */
+.iconConact {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconConact span {
+  color: black;
+  font-size: 14px;
 }

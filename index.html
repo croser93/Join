@@ -41,11 +41,9 @@
                         <div class="input_field">
                             <label aria-label="Priority">Priority</label>
                             <div class="priority-buttons">
-                                <!-- hover effekt einbinden -->
-                                <button type="button" id="urgentBtn" class="priority-btn">Urgent <span class="urgent_icon"></span> </button> 
-                                <button type="button" class="priority-btn">Medium <img src="./assets/Medium.svg" alt=""></button>
-                                <button type="button" class="priority-btn">Low <img src="./assets/Low.svg" alt=""></button>
-                                <!--  -->
+                                <button type="button" id="urgentBtn" class="urgent_btn priority-btn">Urgent <span class="urgent_icon"></span> </button> 
+                                <button type="button" id="mediumBtn" class="medium-btn priority-btn">Medium <span class="medium_icon"></span></button>
+                                <button type="button" id="low_btn" class="low_btn priority-btn">Low <span class="low_icon"></span></button>
                             </div>
                         </div>
 
@@ -54,11 +52,12 @@
                             <div class="custom-category-dropdown" id="contactDropdown">
                                 <div class="dropdown-header" onclick="toggleContactDropdown()">
                                     <span>Select contacts to assign</span>
-                                    <span class="dropdown-arrow" id="dropdownArrow">🢓</span>
+                                    <div class="dropdown-arrow" id="dropdownArrow">🢓</div>
                                 </div>
                                 <div class="dropdown-list" id="categoryDropdownList">
                                     <div id="labelContact"></div>
                                 </div>
+                                <div id="iconConact" class="dpf gap8"></div>
                             </div>
                         </div>
                         
@@ -69,7 +68,7 @@
                             <div class="custom-category-dropdown" id="categoryDropdown">
                                 <div class="dropdown-header" onclick="toggleCategoryDropdown()">
                                     <span id="selectedCategory">Select task category</span>
-                                    <span class="dropdown-arrow" id="dropdownArrow">🢓</span>
+                                    <div class="dropdown-arrow" id="dropdownArrow">🢓</div>
                                 </div>
                                 <div class="dropdown-list" id="categoryDropdownList">
                                     <div id="labelCategory"></div>
@@ -92,7 +91,7 @@
                 <span><span class="req">*</span>This field is required</span>
                 <div class="buttons_Add_Task">
                     <button type="clear" class="btn btn_clear">Clear</button>
-                    <button type="submit" onclick="addTask()" class="btn btn_create" >Create Task</button>
+                    <button type="submit" onclick="addTask(event)" class="btn btn_create" >Create Task</button>
             </div>
         </form>
 
