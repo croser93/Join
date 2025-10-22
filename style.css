@@ -194,7 +194,7 @@ label {
   background: #fff;
   position: static;
   border-radius: 0 0 4px 4px;
-  padding: 8px 12px;
+  padding: 8px 0px;
   max-height: 200px;
   overflow-x: auto;
   margin-bottom: 8px;
@@ -208,12 +208,13 @@ label {
   gap: 24px;
   cursor: pointer;
   font-size: 16px;
-  padding: 6px 0px;
+  padding: 6px 16px;
 }
 
 .dropdown-item:hover {
-  background-color: #dad8d8;
-  padding: 6px 0px;
+  background-color: #2A3647;
+  border-radius: 8px;
+  color: white;
 
 }
 
@@ -286,6 +287,9 @@ label {
   font-size: 12px;
   line-height: 120%;
   text-transform: uppercase;
+  border-style: 2px white solid;
+  color: white;
+  border: 2px solid white;
 
 }
 
@@ -294,7 +298,7 @@ label {
 }
 
 /* ############################################### */
-.iconConact {
+/* .iconConact {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -303,9 +307,16 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .iconConact span {
   color: black;
   font-size: 14px;
+}
+
+.sepraratorSubtask{
+  width: 1px;
+  height: 24px;
+  background-color: #2a3647;
+
 }

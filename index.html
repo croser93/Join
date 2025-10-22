@@ -6,9 +6,10 @@
     <title>Add Task</title>
 
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/standard.css">
     <script src="script.js" defer></script>
-    <script src="template.js" defer></script>
-    <script src="template_funktion.js" defer></script>
+    <script src="./script/template.js" defer></script>
+    <script src="./script/template_funktion.js" defer></script>
 </head>
 <body onload="init()">
     <aside></aside>
@@ -52,7 +53,7 @@
                             <div class="custom-category-dropdown" id="contactDropdown">
                                 <div class="dropdown-header" onclick="toggleContactDropdown()">
                                     <span>Select contacts to assign</span>
-                                    <div class="dropdown-arrow" id="dropdownArrow">🢓</div>
+                                    <div class="dropdown-arrow" id="dropdownArrow"> <img src="./assets/img/arrow_drop_down.png" alt="arrow"></div>
                                 </div>
                                 <div class="dropdown-list" id="categoryDropdownList">
                                     <div id="labelContact"></div>
@@ -68,7 +69,7 @@
                             <div class="custom-category-dropdown" id="categoryDropdown">
                                 <div class="dropdown-header" onclick="toggleCategoryDropdown()">
                                     <span id="selectedCategory">Select task category</span>
-                                    <div class="dropdown-arrow" id="dropdownArrow">🢓</div>
+                                    <div class="dropdown-arrow" id="dropdownArrow"><img src="./assets/img/arrow_drop_down.png" alt="arrow"></div>
                                 </div>
                                 <div class="dropdown-list" id="categoryDropdownList">
                                     <div id="labelCategory"></div>

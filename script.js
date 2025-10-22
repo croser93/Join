@@ -102,7 +102,16 @@ function subtask(addSubtask, subtaskArray) {
   for (let i = 0; i < subtaskArray.length; i++) {
     // Limit to 5 subtasks
     if (i < 5) {
-      addSubtask.innerHTML += `<div class="taskOutput">・ ${subtaskArray[i]}</div>`;
+      addSubtask.innerHTML += `
+
+        <div class="taskOutput dpf sp_between">・ ${subtaskArray[i]}
+          <div class="dpf gap8">
+            <div><img src="./assets/svg/edit.svg" alt="arrow"></div>
+            <div class="sepraratorSubtask"></div>
+            <div><img src="./assets/svg/delete.svg" alt="arrow"></div>
+          </div>
+        </div>
+`
     }
   }
 }
