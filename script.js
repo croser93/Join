@@ -1,27 +1,44 @@
 
 const task = [];
 let subtaskArray = [];
-let contactColors = [ "#FF7A00",
-                      "#9327FF",
-                      "#6E52FF",
-                      "#FC71FF",
-                      "#FFBB2B",
-                      "#1FD7C1",
-                      "#FF3D00", // Rot-Orange
-                      "#FF6EC7", // Rosa
-                      "#C427FF", // Lila
-                      "#5A00FF", // Dunkles Violett
-                      "#00C2FF", // Hellblau
-                      "#00FFB3", // Türkisgrün
-                      "#FFD319", // Gelb
-                      "#FF5A5A", // Koralle
-                      "#B86BFF", // Flieder
-                      "#FF8DC7", // Hellrosa
-                      "#2AE8A8", // Minzgrün
-                      "#FF9F1C", // Warmes Orange
-                      "#F72585", // Magenta
-                      "#7209B7"  // Tiefviolett
-                      // 
+let contactColors = [  
+"#FF5EB3",
+"#FF7A00",
+"#6E52FF",
+"#9327FF",
+"#00BEE8",
+"#1FD7C1",
+"#FF745E",
+"#FFA35E",
+"#FC71FF",
+"#FFC701",
+"#0038FF",
+"#C3FF2B",
+"#FFE62B",
+"#FF4646",
+"#FFBB2B"
+
+                      // "#FF7A00",
+                      // "#9327FF",
+                      // "#6E52FF",
+                      // "#FC71FF",
+                      // "#FFBB2B",
+                      // "#1FD7C1",
+                      // "#FF3D00", // Rot-Orange
+                      // "#FF6EC7", // Rosa
+                      // "#C427FF", // Lila
+                      // "#5A00FF", // Dunkles Violett
+                      // "#00C2FF", // Hellblau
+                      // "#00FFB3", // Türkisgrün
+                      // "#FFD319", // Gelb
+                      // "#FF5A5A", // Koralle
+                      // "#B86BFF", // Flieder
+                      // "#FF8DC7", // Hellrosa
+                      // "#2AE8A8", // Minzgrün
+                      // "#FF9F1C", // Warmes Orange
+                      // "#F72585", // Magenta
+                      // "#7209B7"
+
                        ];
 
 function toggleContactDropdown() {
@@ -76,45 +93,41 @@ function changeCategory(selection) {
 }
 
 function addSubtask() {
-  let readout = document.getElementById("subtaskReadOut");
-  let addSubtask = document.getElementById("addSubtask");
+  const readout = document.getElementById("subtaskReadOut");
+  const addSubtaskContainer = document.getElementById("addSubtask");
 
-  let input = document.getElementById("subtaskReadOut");
-  input.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
+  const value = readout.value.trim();
+  if (value === "") return; // nichts leeres speichern
 
-      subtaskArray.push(readout.value);
+  // Enter Sinvoll?
+  // document.getElementById("subtaskReadOut").addEventListener("keypress", (event) => {  
+  // if (event.key === "Enter") addSubtask();
+  // });
+  subtaskArray.push(value);
+  subtask(addSubtaskContainer, subtaskArray);
 
-      subtask(addSubtask, subtaskArray);
-
-      readout.value = "";
-    }
-  });
+  readout.value = "";
 }
 
+// function subtask(addSubtask, subtaskArray) {
+//   addSubtask.innerHTML = "";
 
+//   for (let i = 0; i < subtaskArray.length; i++) {
+//     // Limit to 5 subtasks
+//     if (i < 5) { // Hier noch etwas ändern... Es werden nur 5 angezeigt allerdings wenn gelöscht, rücken die aus dem array nach.
+//       addSubtask.innerHTML += `
 
-
-function subtask(addSubtask, subtaskArray) {
-  addSubtask.innerHTML = "";
-
-  for (let i = 0; i < subtaskArray.length; i++) {
-    // Limit to 5 subtasks
-    if (i < 5) {
-      addSubtask.innerHTML += `
-
-        <div class="taskOutput dpf sp_between">・ ${subtaskArray[i]}
-          <div class="dpf gap8">
-            <button><img src="./assets/svg/edit.svg" alt="arrow"></button>
-            <div class="sepraratorSubtask"></div>
-            <button onclick="deleteTask(deleteEvent)"><img src="./assets/svg/delete.svg" alt="arrow"></button>
-          </div>
-        </div>
-`
-    }
-  }
-}
+//         <div class="taskOutput dpf sp_between">・ ${subtaskArray[i]}
+//           <div class="dpf gap8">
+//             <button type="button" class="iconButtonsForImg" ><img src="./assets/svg/edit.svg" alt="arrow"></button>
+//             <div class="sepraratorSubtask"></div>
+//             <button type="button" class="iconButtonsForImg" onclick="deleteTask(${i})"><img src="./assets/svg/delete.svg" alt="arrow"></button>
+//           </div>
+//         </div>
+// `
+//     }
+//   }
+// }
 
 
 // ######################################################################
@@ -128,16 +141,16 @@ buttons.forEach(button => {
       button.classList.remove('active');
       selectedPriority = '';
       console.log('Priorität zurückgesetzt');
-      return; // Funktion hier beenden
+      return;
     }
 
-    // Sonst: alle anderen deaktivieren
+// Sonst: alle anderen deaktivieren
     buttons.forEach(btn => btn.classList.remove('active'));
 
-    // Aktuellen aktivieren
+// Aktuellen aktivieren
     button.classList.add('active');
 
-    // Text (z. B. "Medium") speichern
+// speichern
     selectedPriority = button.textContent.trim().split(' ')[0];
     console.log('Ausgewählte Priorität:', selectedPriority);
   });
@@ -176,8 +189,6 @@ function selectContacts(i, checkbox) {
   let badgeName = contactName[i].innerText // besseren Namen raussuchen
   let badgeEl = document.getElementById(`contactDropdownList_${i}`);
 
-
-  // if (checkbox.checked === true)
   const alreadyIn = contactBadge.some(b => b.id === badgeEl.id);
     if (!alreadyIn) {
 
@@ -191,17 +202,6 @@ function selectContacts(i, checkbox) {
     contactBadge = contactBadge.filter(name => name !== badgeEl);
   }
 }
-
-// function iconConactHTML() {
-//   let iconConact = document.getElementById("iconConact")
-
-
-    
-//   contactBadge.forEach(badge => {
-//     iconConact.appendChild(badge.cloneNode(true)); // clone = unabhängige Kopie
-//   });
-
-// }
 
 function iconConactHTML() {
   const iconConact = document.getElementById("iconConact");
@@ -241,6 +241,30 @@ function toggleContactDropdown() {
 
 }
 
-function deleteTask(deleteEvent){
+function deleteTask(i){
 
+  const addSubtask = document.getElementById("addSubtask"); // dein Container-Element
+  subtaskArray.splice(i, 1);
+
+  subtask(addSubtask, subtaskArray);
+}
+
+function cleanInput() {
+  let input = document.getElementById("subtaskReadOut")
+  input.value = "";
+  
+}
+
+function editSubtask(i) {
+  // aktuellen Wert aus dem Array holen
+  const oldValue = subtaskArray[i];
+
+  // neuen Wert abfragen (z. B. per Prompt)
+  const newValue = prompt("Subtask ändern:", oldValue);
+
+  // prüfen, ob der Nutzer was eingegeben hat
+  if (newValue !== null && newValue.trim() !== "") {
+    subtaskArray[i] = newValue.trim(); // neuen Wert speichern
+    subtask(document.getElementById("addSubtask"), subtaskArray); // Liste neu rendern
+  }
 }

@@ -23,14 +23,19 @@
                         <div class="input_field">
                             <label aria-label="title">Title<span class="req">*</span></label>
                             <input type="text" id="title" class="task-input" placeholder="Enter a title" required>
+
                         </div>
                             <div class="input_field">
                             <label aria-label="Title">Discription</label>
-                            <input type="text" id="discription" class="task-input height_136" placeholder="Enter a description">
+                            <textarea id="discription" class="task-input height_136" placeholder="Enter a description"></textarea>
                         </div>
                         <div class="input_field">
                             <label aria-label="Date">Due date<span class="req">*</span></label>
-                            <input type="date" id="date" class="task-input" placeholder="dd/mm/yyyy" required>
+                            <div id="date" class="task-input dpf sp_between inputBackground"  required>
+                                <div class="fontColor">dd/mm/yyyy</div>
+                                <button type="button" class="iconButtonsForImg"><img src="./assets/svg/event.svg" alt="event"></button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -80,7 +85,14 @@
 
                         <div class="input_field">
                             <label aria-label="Subtasks">Subtasks</label>
-                            <input type="text" class="task-input" id="subtaskReadOut" placeholder="Add new subtask">
+                              <div class="input-wrapper">
+                                <input 
+                                type="text" 
+                                class="task-input" 
+                                id="subtaskReadOut" 
+                                placeholder="Add new subtask">
+                                <div id="inputButtons"></div> <!-- Hier werden die Buttons gerendert -->
+                            </div>
                             <div class="subtask" id="addSubtask"></div>
                         </div>
 

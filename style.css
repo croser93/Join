@@ -320,3 +320,30 @@ label {
   background-color: #2a3647;
 
 }
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* .task-input {
+  width: 100%;
+  padding-right: 80px; 
+} */
+ /* Platz für Buttons im Feld */
+
+#inputButtons {
+  position: absolute;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.inputBackground{
+background-color: white
+}
+
+.fontColor{
+  color: #75778B;
+}

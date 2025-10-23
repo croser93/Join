@@ -3,7 +3,8 @@ function init() {
     renderCategoryOnHTML();
     addSubtask();
     fetchSVGs();
-    renderIcon();
+    // renderIcon();
+    addTaskButton();
     
 }
 
@@ -33,3 +34,7 @@ function renderCategoryOnHTML() {
     }
 }
 
+function addTaskButton() {
+  const input = document.getElementById("subtaskReadOut");
+  input.addEventListener("input", renderSubtaskButtons);
+}
