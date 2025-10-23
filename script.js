@@ -106,9 +106,9 @@ function subtask(addSubtask, subtaskArray) {
 
         <div class="taskOutput dpf sp_between">・ ${subtaskArray[i]}
           <div class="dpf gap8">
-            <div><img src="./assets/svg/edit.svg" alt="arrow"></div>
+            <button><img src="./assets/svg/edit.svg" alt="arrow"></button>
             <div class="sepraratorSubtask"></div>
-            <div><img src="./assets/svg/delete.svg" alt="arrow"></div>
+            <button onclick="deleteTask(deleteEvent)"><img src="./assets/svg/delete.svg" alt="arrow"></button>
           </div>
         </div>
 `
@@ -238,5 +238,9 @@ function toggleContactDropdown() {
   else {
     renderIcon();
   }
+
+}
+
+function deleteTask(deleteEvent){
 
 }
