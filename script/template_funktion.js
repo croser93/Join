@@ -1,21 +1,13 @@
 function init() {
     renderContactOnHTML();
     renderCategoryOnHTML();
-    addSubtask();
     fetchSVGs();
-    // renderIcon();
     addTaskButton();
+    addSubtask();
+    enterSubtask();
+
     
 }
-
-// let contact = ["Alex", "Lisa", "Tim", "Max"]; // Soll später aus DB kommen
-const contact = [
-  "Alex", "Lisa", "Tim", "Max", "Sophie", "Jonas", "Lea", "Paul", "Marie", "Lukas",
-  "Nina", "Felix", "Emma", "Ben", "Laura", "Tom", "Mia", "Noah", "Anna", "Leon",
-  "Julia", "Finn", "Lena", "Elias", "Clara", "Luis", "Sarah", "Jan", "Hannah", "David"
-];
-
-let category = ["Option1", "Option2", "Option3", "Option4"]; // category soll später hier gesetzt werden
 
 function renderContactOnHTML() {
     const contactRef = document.getElementById("labelContact");

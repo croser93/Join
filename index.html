@@ -7,35 +7,73 @@
 
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./css/standard.css">
+    <link rel="stylesheet" href="./css/headbar_sidebar.css">
     <script src="script.js" defer></script>
     <script src="./script/template.js" defer></script>
     <script src="./script/template_funktion.js" defer></script>
+    <!-- <script src="./schript.contacts.js"></script> -->
 </head>
 <body onload="init()">
-    <aside></aside>
-    <nav></nav>
+
+    <nav>
+        <div class="upper-container">
+            <div class="sidebar">
+                <img class="sidebar-logo" src="./assets/img/logo/join_logo_vector.svg">
+                <div class="next-page">
+                    <button class="summary" href="#"><img class="subtaskIcon" src="./assets/svg/icons_page/summary.svg"></button>
+                    <button class="add-task" href="#"><img class="subtaskIcon" src="./assets/svg/icons_page/add_task.svg"></button>
+                    <button class="board" href="#"><img class="subtaskIcon" src="./assets/svg/icons_page/board.svg"></button>
+                    <button class="contacts" href="#"><img class="subtaskIcon" src="./assets/svg/icons_page/contacts.svg"></button>
+                </div>
+                <div class="sidebar-bottom">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Legal notice</a>
+                </div>
+            </div>
+            <div class="center-wrap">
+                <header>
+                <div class="header-wrap" id="headerWrap">
+                    <h2>Kanban Project Management Tool</h2>
+                    <div class="profile-section">
+                        <button class="help-icon"><img src="./assets/svg/help_small.svg"></button>
+                        <button class="profile" id="profilePicture" onclick="dropDown(event)">SM</button>
+                    </div>
+                </div> 
+                </header>
+                <div class="dropdown-menu-container" id="dropDownMenu">
+                    <div class="dropdown-menu">
+                        <button>Legal Notice</button>
+                        <button>Privacy Policy</button>
+                        <button>Log out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <main class="border">
-        <form>
+        <form id="taskForm">
             <h1>Add Task</h1>
             <section>
                 <div class="add-task-container">
                     <div class="task-input-container">
                         <div class="input_field">
                             <label aria-label="title">Title<span class="req">*</span></label>
-                            <input type="text" id="title" class="task-input" placeholder="Enter a title" required>
-
+                            <input type="text" id="title" class="task-input inputBorderColor" placeholder="Enter a title">
+                            <div id="titleError" class="error_message"></div>
                         </div>
-                            <div class="input_field">
+                        <div class="input_field">
                             <label aria-label="Title">Discription</label>
-                            <textarea id="discription" class="task-input height_136" placeholder="Enter a description"></textarea>
+                            <textarea id="discription" class="task-input inputBorderColor" placeholder="Enter a description"></textarea>
                         </div>
                         <div class="input_field">
                             <label aria-label="Date">Due date<span class="req">*</span></label>
-                            <div id="date" class="task-input dpf sp_between inputBackground"  required>
-                                <div class="fontColor">dd/mm/yyyy</div>
-                                <button type="button" class="iconButtonsForImg"><img src="./assets/svg/event.svg" alt="event"></button>
+                            <div id="date" class="task-input dpf sp_between inputBackground"  >
+                                    <input class="fontColor cleanInputforDate" id="duedate" placeholder="dd/mm/yyyy" 
+                                    maxlength="10"  ></input>
+                                <button type="button" onclick="pickDate()" class="iconButtonsForImg"><img src="./assets/svg/event.svg" alt="event"></button>
                             </div>
-
+                            <div id="dateError" class="error_message"></div>
                         </div>
                     </div>
                 </div>
@@ -68,19 +106,22 @@
                         </div>
                         
 
-                        <div class="input_field">
-                            <label aria-label="Category">Category<span class="req">*</span></label>
+                    <div class="input_field">
+                        <label aria-label="Category">Category<span class="req">*</span></label>
 
                             <div class="custom-category-dropdown" id="categoryDropdown">
                                 <div class="dropdown-header" onclick="toggleCategoryDropdown()">
-                                    <span id="selectedCategory">Select task category</span>
-                                    <div class="dropdown-arrow" id="dropdownArrow"><img src="./assets/img/arrow_drop_down.png" alt="arrow"></div>
+                                    <input class="fontColor cleanInputforDate" id="selectedCategory" placeholder="Select task category">
+                                    <div class="dropdown-arrow" id="dropdownArrow">
+                                        <img src="./assets/img/arrow_drop_down.png" alt="arrow">
+                                    </div>
                                 </div>
                                 <div class="dropdown-list" id="categoryDropdownList">
                                     <div id="labelCategory"></div>
                                 </div>
                             </div>
-                        </div>
+                        <div id="categoryError" class="error_message"></div>
+                    </div>
                         
 
                         <div class="input_field">
@@ -88,10 +129,10 @@
                               <div class="input-wrapper">
                                 <input 
                                 type="text" 
-                                class="task-input" 
+                                class="task-input inputBorderColor" 
                                 id="subtaskReadOut" 
                                 placeholder="Add new subtask">
-                                <div id="inputButtons"></div> <!-- Hier werden die Buttons gerendert -->
+                                <div id="inputButtons"></div>
                             </div>
                             <div class="subtask" id="addSubtask"></div>
                         </div>
@@ -102,9 +143,13 @@
 
             <div class="footer_Add_Task">
                 <span><span class="req">*</span>This field is required</span>
-                <div class="buttons_Add_Task">
-                    <button type="clear" class="btn btn_clear">Clear</button>
-                    <button type="submit" onclick="addTask(event)" class="btn btn_create" >Create Task</button>
+                <div class="buttons_Add_Task dpf gap8">
+                    <button type="button" class="btn btn_clear dpf_cc" onclick="clearInput()">Clear
+                        <img src="./assets/svg/close.svg" alt="">
+                    </button>
+                    <button type="submit" class="btn btn_create dpf_cc">Create Task
+                        <img class="testtest" src="./assets/svg/check.svg" alt="">
+                    </button>
             </div>
         </form>
 

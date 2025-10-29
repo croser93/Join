@@ -140,11 +140,26 @@ input[type="checkbox"]:checked:hover{
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 32px;
 
 }
 
 .hover:hover {
-  background-color: cornflowerblue;
+  background-color: #dad8d8;
   border-radius: 50%;
   width: 32px;
+}
+
+.fontColorBl{
+  color: black;
+}
+
+.subtaskIcon{
+height: 24px;
+width: 24px;
+}
+
+.testtest{
+  filter: brightness(0) invert(1);
+
 }

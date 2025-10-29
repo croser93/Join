@@ -31,34 +31,26 @@ body {
     justify-content: space-between;
 }
 
-aside {
-  width: 232px;
-  height: 100vh;
-  background-color: #2a3647;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.dnone{
+  display: none;
 }
 
 nav {
-  background-color: bisque;
   height: 96px;
-  width: 100%;
-  border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+
 }
 
 main {
-  height: calc(100vh - 96px);
-  margin-left: 232px;
+  /* height: calc(100vh - 96px); */
   display: flex;
   justify-content: center;
+  margin-left: 200px;
+
+  /* margin left dafür in header & bar postion relativ raus?? */
 }
 
 .border {
-  padding: 110px 96px;
+  padding: 80px 80px;
   background-color: #f6f7f8;
 }
 
@@ -72,7 +64,8 @@ section {
   gap: 24px;
 }
 
-.req {
+
+.error_message, .req {
   color: red;
 }
 
@@ -85,10 +78,6 @@ section {
 .input_field {
   display: flex;
   flex-direction: column;
-}
-
-.height_136 {
-  height: 136px;
 }
 
 label {
@@ -146,7 +135,7 @@ label {
 }
 
 .btn {
-  padding: 16px;
+  padding: 12px;
   border-radius: 10px;
   gap: 4px;
   font-size: 21px;
@@ -162,6 +151,7 @@ label {
   background-color: #2a3647;
   color: white;
   font-weight: 700;
+  border: none;
 }
 
 .custom-category-dropdown {
@@ -234,6 +224,17 @@ label {
   cursor: pointer;
   border-radius: 16px;
 }
+
+.editdeleteBtn{
+  display: none;
+}
+
+.taskOutput:hover .editdeleteBtn{
+  display: flex;
+  gap: 8px;
+}
+
+
 /* ################################### */
 
 
@@ -316,7 +317,7 @@ label {
 
 .sepraratorSubtask{
   width: 1px;
-  height: 24px;
+  height: 30px;
   background-color: #2a3647;
 
 }
@@ -326,12 +327,6 @@ label {
   display: flex;
   align-items: center;
 }
-
-/* .task-input {
-  width: 100%;
-  padding-right: 80px; 
-} */
- /* Platz für Buttons im Feld */
 
 #inputButtons {
   position: absolute;
@@ -346,4 +341,54 @@ background-color: white
 
 .fontColor{
   color: #75778B;
+}
+
+textarea{ 
+  max-width: 440px;
+  min-width: 440px;
+  min-height: 136px;
+  max-height: 440px;
+}
+
+.inputBorderColor:focus {
+    outline:none ;
+    border: 2px solid #29ABE2;
+  
+}
+
+.inputBorderColor:not(:placeholder-shown) {
+    border-color: #29ABE2; /* Blau beim Fokussieren */
+    outline: none;
+}
+
+.cleanInputforDate{
+  border-style: none;
+  font-size: 18px;
+
+}
+
+.cleanInputforDate:focus{
+  outline: none;
+  font-size: 18px; 
+  background-color: white;
+}
+
+.btn_create:hover{
+  background-color: #29ABE2;
+  box-shadow: -2px 4px #00000021;
+}
+
+.btn_clear:hover {
+  border: 3px solid #29ABE2;
+  color: #29ABE2;
+  box-shadow: -2px 4px #00000021;
+  padding: 10px;
+}
+
+
+#selectedCategory {
+  pointer-events: none; 
+  user-select: none;      
+  cursor: pointer;     
+  color: black;
 }
