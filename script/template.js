@@ -21,15 +21,23 @@ function subtask(addSubtask, subtaskArray) {
   addSubtask.innerHTML = "";
 
   for (let i = 0; i < subtaskArray.length; i++) {
-    // Limit to 5 subtasks
    
       addSubtask.innerHTML += `
 
-        <div class="taskOutput dpf_cc sp_between">・ ${subtaskArray[i]}
+        <div class="taskOutput dpf_cc sp_between" id="taskOutput-${i}">・ ${subtaskArray[i]}
           <div class="editdeleteBtn">
             <button type="button" class="iconButtonsForImg" onclick="editSubtask(${i})"><img src="./assets/svg/edit.svg" alt="pancel"></button>
             <div class="sepraratorSubtask"></div>
             <button type="button" class="iconButtonsForImg" onclick="deleteTask(${i})"><img src="./assets/svg/delete.svg" alt="arrow"></button>
+          </div>
+        </div>
+
+        <div class="dnone dpf_cc sp_between containerEditSubtask" id="containerEditSubtask-${i}">
+          <input id="editInputSubtask-${i}" class="stylingInput" >
+          <div class="dpf_cc">
+            <button type="button" class="iconButtonsForImg" onclick="clearEditSubtask(${i})"><img src="./assets/svg/delete.svg" alt="pancel"></button>
+            <div class="sepraratorSubtask"></div>
+            <button type="button" class="iconButtonsForImg" onclick="addEditSubtask(${i})"><img src="./assets/svg/check.svg" alt="arrow"></button>
           </div>
         </div>
 `

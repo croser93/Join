@@ -1,6 +1,5 @@
 
 let task = [];
-const BASE_URL = "https://join-ee4e0-default-rtdb.europe-west1.firebasedatabase.app/";
 const contact = ["Alex", "Lisa", "Tim"];
 let subtaskArray = [];
 let contactList = [];
@@ -23,39 +22,6 @@ let contactColors = [
 "#FF4646",
 "#FFBB2B"
  ];
-
-
-async function postData(path="addTask.json", data={task}) {
-  let response = await fetch(BASE_URL + path,{
-    method: "POST",
-    headers: {"Content-Type": "application/json",},
-    body: JSON.stringify(data)
-  });
-   return response.json();
-}
-
-
-async function addTask() {
-  let titel = document.getElementById("title");
-  let discription = document.getElementById("discription");
-  let date = document.getElementById("duedate");
-  let category = document.getElementById("selectedCategory")
-
-  const newTask = {
-    "titel": titel.value,
-    "discription": discription.value,
-    "date": date.value || date.innerText,
-    "subtask": String(subtaskArray),
-    "priority": selectedPriority,
-    "contact": contactList,
-    "category": category.value
-
-  };
-  task.push(newTask);
-  clearInput()
-   return postData("addTask.json", newTask);
-}
-
 
 function clearInput() {
   document.getElementById("title").value = "";
@@ -95,17 +61,25 @@ function clearContact() {
   });
 }
 
+function toggleDropdown(selector) {
+  const dropdown = document.getElementById(selector);
+  const isOpen = dropdown.classList.toggle("open");
 
-function toggleContactDropdown() {
-  const dropdown = document.getElementById("contactDropdown");
-  dropdown.classList.toggle("open");
-  renderIcon()
+  if (selector === "contact") {
+    renderIcon();
+  }
+
+  if (isOpen) {
+    function handleClickOutside(e) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("open");
+        document.removeEventListener("click", handleClickOutside);
+      }
+    }
+    document.addEventListener("click", handleClickOutside);
+  }
 }
 
-function toggleCategoryDropdown() {
-  const dropdown = document.getElementById("categoryDropdown");
-  dropdown.classList.toggle("open");
-}
 
 function changeCategory(selection) {
   let text = "";
@@ -121,7 +95,7 @@ function changeCategory(selection) {
   if (input && text) {
     input.value = text;
   }
-  toggleCategoryDropdown();
+  toggleDropdown('selectedCategory');
 }
 
 
@@ -165,7 +139,6 @@ buttons.forEach(button => {
 
 // speichern
     selectedPriority = button.textContent.trim().split(' ')[0];
-    console.log('Ausgewählte Priorität:', selectedPriority);
   });
 });
 // ######################################################################
@@ -260,12 +233,60 @@ function cleanInput() {
 
 
 function editSubtask(i) {
-  const oldValue = subtaskArray[i];
-  const newValue = prompt("Subtask ändern:", oldValue);
+  const taskOutput = document.getElementById(`taskOutput-${i}`);
+  const editInputSubtask = document.getElementById(`editInputSubtask-${i}`);
+  const containerEditSubtask = document.getElementById(`containerEditSubtask-${i}`)
+
+
+    taskOutput.classList.toggle("dnone");
+    containerEditSubtask.classList.toggle("dnone")
+    editInputSubtask.value = subtaskArray[i];
+    editInputSubtask.focus();   
+      editInputSubtask.onblur = (e) => {
+
+    // wenn Fokus auf einen Button im Container geht → nicht abbrechen
+    if (e.relatedTarget && containerEditSubtask.contains(e.relatedTarget)) {
+      return;
+    }
+    cancelEditSubtask(i);
+  }
+
+  };
+
+function cancelEditSubtask(i) {
+  const taskOutput = document.getElementById(`taskOutput-${i}`);
+  const container = document.getElementById(`containerEditSubtask-${i}`);
+
+  container.classList.add("dnone");
+  taskOutput.classList.remove("dnone");
+}
+  
+function addEditSubtask(i) {
+  const editInputSubtask = document.getElementById(`editInputSubtask-${i}`);
+  const newValue = editInputSubtask.value;
+  
 
   if (newValue !== null && newValue.trim() !== "") {
-    subtaskArray[i] = newValue.trim(); // neuen Wert speichern
-    subtask(document.getElementById("addSubtask"), subtaskArray); // Liste neu rendern
+    subtaskArray[i] = newValue.trim();
+    subtask(document.getElementById("addSubtask"), subtaskArray);
+  }
+
+  else{ (editInputSubtask.value === "") 
+  subtaskArray.splice(i, 1);
+  subtask(document.getElementById("addSubtask"), subtaskArray) 
+  }
+}
+
+function clearEditSubtask(i) {
+  const editInputSubtask = document.getElementById(`editInputSubtask-${i}`);
+
+  if (editInputSubtask.value === "") {
+  subtaskArray.splice(i, 1);
+  subtask(document.getElementById("addSubtask"), subtaskArray) 
+  }
+  else{
+  editInputSubtask.value = "";
+  editInputSubtask.focus();
   }
 }
 

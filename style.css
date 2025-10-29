@@ -35,18 +35,22 @@ body {
   display: none;
 }
 
+.gap8{
+  gap: 8px;
+}
+
 nav {
   height: 96px;
 
 }
 
 main {
-  /* height: calc(100vh - 96px); */
   display: flex;
   justify-content: center;
-  margin-left: 200px;
+}
 
-  /* margin left dafür in header & bar postion relativ raus?? */
+.overflow-y{
+  overflow-y: auto;
 }
 
 .border {
@@ -131,7 +135,8 @@ label {
 .footer_Add_Task {
   display: flex;
   justify-content: space-between;
-  margin-top: 80px;
+  padding-top: 80px;
+  padding-bottom: 40px;
 }
 
 .btn {
@@ -253,11 +258,13 @@ label {
   color: #fff;
 }
 
-.medium-btn svg 
-{ filter: brightness(0); }
+ .medium-btn svg {
+filter: invert(65%) sepia(33%) saturate(3407%) hue-rotate(1deg) brightness(107%) contrast(104%);
+} 
 
 .urgent_btn:hover svg,
 .medium-btn:hover svg,
+.checkSvg,
 .low_btn:hover svg {
   filter: brightness(0) invert(1);
 }
@@ -294,22 +301,6 @@ label {
 
 }
 
-.gap8{
-  gap: 8px;
-}
-
-/* ############################################### */
-/* .iconConact {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  color: white;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
 .iconConact span {
   color: black;
   font-size: 14px;
@@ -339,10 +330,6 @@ label {
 background-color: white
 }
 
-.fontColor{
-  color: #75778B;
-}
-
 textarea{ 
   max-width: 440px;
   min-width: 440px;
@@ -350,7 +337,7 @@ textarea{
   max-height: 440px;
 }
 
-.inputBorderColor:focus {
+.inputBorderColor:focus{
     outline:none ;
     border: 2px solid #29ABE2;
   
@@ -364,7 +351,6 @@ textarea{
 .cleanInputforDate{
   border-style: none;
   font-size: 18px;
-
 }
 
 .cleanInputforDate:focus{
@@ -385,10 +371,83 @@ textarea{
   padding: 10px;
 }
 
+.btn_clear:hover .closeSvg{
+  filter: invert(77%) sepia(55%) saturate(5018%) hue-rotate(165deg) brightness(93%) contrast(89%);
+}
 
 #selectedCategory {
   pointer-events: none; 
   user-select: none;      
   cursor: pointer;     
   color: black;
+}
+
+.stylingInput{
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px;
+
+}
+.containerEditSubtask{
+  margin-top: 4px 0px;
+  background-color: white;
+  border-bottom: 2px solid #29ABE2;
+}
+
+
+/* standart css???################################################################################# */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 19px;
+    height: 19px;
+    background-image: url(../assets/svg/check_btn.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+input[type="checkbox"]:hover {
+    filter: brightness(0) invert(1);
+
+}
+
+input[type="checkbox"]:checked{
+    background-image: url(../assets/svg/check_btn_checked.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+input[type="checkbox"]:checked:hover{
+    filter: brightness(0) invert(1);
+}
+
+.iconButtonsForImg{
+  background: none;      
+  border: none;          
+  padding: 0;            
+  margin: 0;
+  cursor: pointer;       
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+
+}
+
+.hover:hover {
+  background-color: #dad8d8;
+  border-radius: 50%;
+  width: 32px;
+}
+
+.fontColorBl{
+  color: black;
+}
+
+.subtaskIcon{
+height: 24px;
+width: 24px;
 }
